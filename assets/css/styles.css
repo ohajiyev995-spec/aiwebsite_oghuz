@@ -1132,3 +1132,27 @@ main {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+/* ---- Fighter images: keep aspect ratio, no stretch ---- */
+.fighter-hero img,
+.fighter-card img,
+.fighter-media img,
+img.fighter-portrait {
+  width: 100%;
+  height: auto;             /* keep natural ratio */
+  aspect-ratio: 4 / 5;      /* 1200x1500 -> 4:5 */
+  object-fit: cover;        /* fill without squish */
+  display: block;
+}
+
+/* If any container forces a fixed height, neutralize it */
+.fighter-hero .portrait,
+.fighter-card .thumb,
+.fighter-media .portrait {
+  height: auto !important;
+}
+
+/* If any global img rule sets height: 100%, override it here */
+img {
+  height: auto;
+}
+
