@@ -59,6 +59,7 @@ function buildPage({ fighter, division }) {
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link rel="stylesheet" href="../assets/css/overrides.css?v=1" />
   </head>
   <body data-page="fighter" data-fighter="${fighter.slug}">
     <a class="skip-link" href="#main-content">Skip to content</a>
