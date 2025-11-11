@@ -1,4 +1,4 @@
-import { promises as fs } from "node:fs";
+import { promises as fs, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.join(__dirname, "..");
 const FIGHTERS_DIR = path.join(ROOT, "fighters");
+const FIGHTERS_IMG_DIR = path.join(ROOT, "assets", "img", "fighters");
 
 const rosterModuleUrl = pathToFileURL(path.join(ROOT, "assets/js/roster.js")).href;
 const { ROSTER } = await import(rosterModuleUrl);
@@ -26,9 +27,7 @@ function buildPage({ fighter, division }) {
   const notable = fighter.notableFights
     .map((fight) => `<li>${escapeHtml(fight)}</li>`)
     .join("\n                ");
-  const galleryImages = fighter.gallery?.length
-    ? fighter.gallery
-    : [fighter.img, fighter.img, fighter.img];
+  const galleryImages = getGalleryImages(fighter.slug);
 
   const gallery = galleryImages
     .map(
@@ -257,6 +256,17 @@ function ordinal(num) {
   if (mod100 >= 11 && mod100 <= 13) return `${num}th`;
   const suffix = suffixes[num % 10] ?? suffixes[0];
   return `${num}${suffix}`;
+}
+
+function getGalleryImages(slug) {
+  const images = [];
+  for (let idx = 1; idx <= 3; idx += 1) {
+    const filename = `${slug}-${idx}.webp`;
+    if (existsSync(path.join(FIGHTERS_IMG_DIR, filename))) {
+      images.push(`../assets/img/fighters/${filename}`);
+    }
+  }
+  return images;
 }
 
 function escapeHtml(value) {

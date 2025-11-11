@@ -1133,12 +1133,6 @@ main {
   border: 0;
 }
 
-/* Hide all fighter galleries without deleting HTML */
-.fighter-gallery,
-section.gallery,
-.gallery {
-  display: none !important;
-}
 /* ---- Fighter images: keep aspect ratio, no stretch ---- */
 .fighter-hero img,
 .fighter-card img,

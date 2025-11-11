@@ -1,16 +1,11 @@
-/* Hide all gallery sections site-wide (safe, reversible) */
+/* Gallery overrides: ensure sections remain visible with default spacing */
 .gallery,
 .fighter-gallery,
 .gallery-section,
 .media-gallery,
 section.gallery,
 section.fighter-gallery {
-  display: none !important;
-}
-
-/* Remove leftover spacing where galleries used to be */
-.gallery,
-.fighter-gallery {
-  margin: 0 !important;
-  padding: 0 !important;
+  display: revert !important;
+  margin: revert !important;
+  padding: revert !important;
 }

@@ -88,7 +88,7 @@ def text_measure(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.ImageFont
     return bbox[2] - bbox[0], bbox[3] - bbox[1]
 
 
-def draw_poster(slug: str, label: str, color_pair: Tuple[str, str]) -> None:
+def draw_poster(slug: str, label: str, color_pair: Tuple[str, str], variant_index: int = 0) -> None:
     bg = blended_background(CANVAS[0], CANVAS[1], color_pair[0], color_pair[1])
 
     accent = Image.new("RGBA", CANVAS, (225, 29, 72, 0))
@@ -99,8 +99,21 @@ def draw_poster(slug: str, label: str, color_pair: Tuple[str, str]) -> None:
         outline=(225, 29, 72, 90),
         width=4,
     )
-    accent_draw.line((60, 160, CANVAS[0] - 60, 200), fill=(14, 165, 233, 120), width=6)
-    accent_draw.line((60, CANVAS[1] - 160, CANVAS[0] - 60, CANVAS[1] - 200), fill=(14, 165, 233, 120), width=6)
+    shift = variant_index * 12
+    accent_draw.line((60 + shift, 160 + shift, CANVAS[0] - 60 - shift, 200 + shift), fill=(14, 165, 233, 120), width=6)
+    accent_draw.line(
+        (60 + shift, CANVAS[1] - 160 - shift, CANVAS[0] - 60 - shift, CANVAS[1] - 200 - shift),
+        fill=(14, 165, 233, 100),
+        width=6,
+    )
+    if variant_index:
+        accent_draw.arc(
+            (80 + shift, 120 + shift, CANVAS[0] - 80 - shift, CANVAS[1] - 120 - shift),
+            20,
+            200,
+            fill=(225, 29, 72, 80),
+            width=4,
+        )
     bg = Image.alpha_composite(bg.convert("RGBA"), accent)
     draw = ImageDraw.Draw(bg)
 
@@ -124,7 +137,8 @@ def draw_poster(slug: str, label: str, color_pair: Tuple[str, str]) -> None:
         fill=(230, 234, 242, 255),
     )
 
-    output_path = OUTPUT_DIR / f"{slug}.webp"
+    suffix = "" if variant_index == 0 else f"-{variant_index}"
+    output_path = OUTPUT_DIR / f"{slug}{suffix}.webp"
     bg.convert("RGB").save(output_path, "WEBP", quality=90)
     print(f"Created {output_path.relative_to(Path.cwd())}")
 
@@ -175,7 +189,9 @@ def draw_banner(slug: str, title: str, weight: str, color_pair: Tuple[str, str])
 def main() -> None:
     colors_cycle = BACKGROUND_COLORS * (len(FIGHTER_LABELS) // len(BACKGROUND_COLORS) + 1)
     for (slug, label), colors in zip(FIGHTER_LABELS, colors_cycle, strict=False):
-        draw_poster(slug, label, colors)
+        draw_poster(slug, label, colors, 0)
+        for variant in range(1, 4):
+            draw_poster(slug, label, colors, variant)
 
     banner_cycle = BACKGROUND_COLORS * (len(DIVISION_BANNERS) // len(BACKGROUND_COLORS) + 1)
     for (slug, title, weight), colors in zip(DIVISION_BANNERS, banner_cycle, strict=False):
