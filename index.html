@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UFC: Two Per Division</title>
+    <meta
+      name="description"
+      content="Track the top two contenders in every UFC division. Quick overviews, stats, and fighter deep-dives in a single fan-built hub."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="assets/img/icons/ufc-accent.svg" />
+    <link rel="stylesheet" href="assets/css/styles.min.css" />
+  </head>
+  <body data-page="home">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header" role="banner">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html" aria-label="UFC: Two Per Division home">
+          <svg aria-hidden="true" viewBox="0 0 48 48" fill="none">
+            <path
+              d="M8 12 20 4h16l12 8v16l-12 8H20l-12-8z"
+              fill="rgba(225,29,72,0.24)"
+              stroke="#E11D48"
+              stroke-width="2"
+            ></path>
+            <path
+              d="m18 16 6-4h8l6 4v8l-6 4h-8l-6-4z"
+              fill="rgba(14,165,233,0.32)"
+              stroke="#0EA5E9"
+              stroke-width="2"
+            ></path>
+          </svg>
+          UFC: Two Per Division
+        </a>
+
+        <button
+          type="button"
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+        >
+          <span aria-hidden="true"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+
+        <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
+          <ul>
+            <li><a href="index.html" data-nav="home">Home</a></li>
+            <li><a href="divisions.html" data-nav="divisions">Divisions</a></li>
+            <li><a href="about.html" data-nav="about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero section" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="hero__inner">
+            <div class="hero__copy">
+              <span class="hero__tag">Fan Project</span>
+              <h1 id="hero-title">UFC: Two Per Division</h1>
+              <p>
+                A quick look at the top two contenders in every division. Explore concise overviews,
+                up-to-date stats, and signature fights from both the men’s and women’s rosters.
+              </p>
+              <div class="hero__cta">
+                <a class="button" href="divisions.html">Browse divisions</a>
+                <a class="button button-outline" href="about.html">What is this?</a>
+              </div>
+              <div class="featured-strip" id="featured-strip" role="complementary" aria-live="polite">
+                <img
+                  src="assets/img/fighters/placeholder.webp"
+                  alt="Featured fighter portrait"
+                  class="featured-avatar"
+                  loading="lazy"
+                />
+                <div class="featured-meta">
+                  <strong>Loading featured fighter…</strong>
+                  <span>Please wait just a moment.</span>
+                </div>
+                <a class="button button-secondary" href="divisions.html">See all fighters</a>
+              </div>
+            </div>
+            <div class="hero__visual" aria-hidden="true">
+              <div class="hero-vignette"></div>
+              <img class="hero-accent" src="assets/img/icons/ufc-accent.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="container">
+          <div class="section-title">
+            <h2>Quick browse</h2>
+            <span>Tap a division to jump into fighter cards.</span>
+          </div>
+          <div class="quick-browse">
+            <div
+              class="quick-browse__list"
+              id="quick-browse-list"
+              aria-label="Quick browse divisions"
+              role="list"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+          <article class="surface" style="padding: 2rem;">
+            <h3>Divisions at a glance</h3>
+            <p>
+              Every page on this site is powered from a single roster file. Two fighters per
+              division keeps it lightweight and easy to maintain while still highlighting the most
+              compelling contenders.
+            </p>
+          </article>
+          <article class="surface" style="padding: 2rem;">
+            <h3>Accessible by design</h3>
+            <p>
+              Whether you’re browsing on desktop, tablet, or mobile, navigation stays keyboard
+              friendly with focus states that pop, smart modals, and layouts that rearrange smoothly.
+            </p>
+          </article>
+          <article class="surface" style="padding: 2rem;">
+            <h3>Static, fast, resilient</h3>
+            <p>
+              Pre-generated fighter pages and optimized WebP imagery keep the experience fast. Update
+              the data file, run the generator, and you’re ready with fresh stats.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer__inner">
+        <div class="footer-top">
+          <a class="brand" href="index.html">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none">
+              <path
+                d="M8 12 20 4h16l12 8v16l-12 8H20l-12-8z"
+                fill="rgba(225,29,72,0.24)"
+                stroke="#E11D48"
+                stroke-width="2"
+              ></path>
+              <path
+                d="m18 16 6-4h8l6 4v8l-6 4h-8l-6-4z"
+                fill="rgba(14,165,233,0.32)"
+                stroke="#0EA5E9"
+                stroke-width="2"
+              ></path>
+            </svg>
+            UFC: Two Per Division
+          </a>
+          <div class="footer-social" aria-label="Social media">
+            <a
+              href="https://www.linkedin.com/in/&#60;MY-USERNAME&#62;/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+            >
+              <span aria-hidden="true">in</span>
+            </a>
+            <a
+              href="https://github.com/&#60;MY-USERNAME&#62;"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+            >
+              <span aria-hidden="true">GH</span>
+            </a>
+            <a
+              href="https://www.instagram.com/&#60;MY-USERNAME&#62;/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+            >
+              <span aria-hidden="true">IG</span>
+            </a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="divisions.html">Divisions</a>
+            <a href="about.html">About</a>
+          </nav>
+          <p class="disclaimer">
+            Unofficial fan site for educational purposes. All rights belong to their respective owners.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      class="focus-trap"
+      id="popover-modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Division fighters"
+    >
+      <div class="modal-card" role="document">
+        <header>
+          <h3 id="popover-title">Division fighters</h3>
+          <button type="button" class="modal-close" data-action="close-popover">
+            <span class="sr-only">Close division popover</span>
+            &times;
+          </button>
+        </header>
+        <div id="popover-content"></div>
+      </div>
+    </div>
+
+    <script type="module" src="assets/js/main.min.js"></script>
+  </body>
+</html>
