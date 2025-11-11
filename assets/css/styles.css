@@ -1156,3 +1156,23 @@ img {
   height: auto;
 }
 
+/* ---- UFC portraits: lock ratio, no stretching ---- */
+.fighter-hero img,
+.fighter-card img,
+img.fighter-portrait {
+  width: 100% !important;
+  height: auto !important;          /* keep natural ratio */
+  aspect-ratio: 4 / 5 !important;   /* our portraits are 1200x1500 */
+  object-fit: cover !important;     /* crop instead of squish */
+  display: block;
+}
+
+/* kill any fixed heights on wrappers */
+.fighter-hero .portrait,
+.fighter-card .thumb,
+.fighter-media .portrait {
+  height: auto !important;
+}
+
+/* safety: if some global img sets height:100% */
+img { height: auto !important; }
