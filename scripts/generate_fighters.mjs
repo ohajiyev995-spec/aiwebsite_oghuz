@@ -7,6 +7,11 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.join(__dirname, "..");
 const FIGHTERS_DIR = path.join(ROOT, "fighters");
 const FIGHTERS_IMG_DIR = path.join(ROOT, "assets", "img", "fighters");
+const SITE_SOCIALS = {
+  linkedin: "https://www.linkedin.com/in/oghuz-mamiyev-2763a134b",
+  github: "https://github.com/<PUT-YOUR-GITHUB>",
+  instagram: "https://www.instagram.com/21lancelot?igsh=d2F1d2VqM3hobHRq>/",
+};
 
 const rosterModuleUrl = pathToFileURL(path.join(ROOT, "assets/js/roster.js")).href;
 const { ROSTER } = await import(rosterModuleUrl);
@@ -182,30 +187,9 @@ function buildPage({ fighter, division }) {
             UFC: Two Per Division
           </a>
           <div class="footer-social" aria-label="Social media">
-            <a
-              href="https://www.linkedin.com/in/&#60;MY-USERNAME&#62;/"
-              target="_blank"
-              rel="noopener"
-              aria-label="LinkedIn"
-            >
-              <span aria-hidden="true">in</span>
-            </a>
-            <a
-              href="https://github.com/&#60;MY-USERNAME&#62;"
-              target="_blank"
-              rel="noopener"
-              aria-label="GitHub"
-            >
-              <span aria-hidden="true">GH</span>
-            </a>
-            <a
-              href="https://www.instagram.com/&#60;MY-USERNAME&#62;/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Instagram"
-            >
-              <span aria-hidden="true">IG</span>
-            </a>
+            <a href="${SITE_SOCIALS.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+            <a href="${SITE_SOCIALS.github}" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+            <a href="${SITE_SOCIALS.instagram}" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -217,6 +201,7 @@ function buildPage({ fighter, division }) {
           <p class="disclaimer">
             Unofficial fan site for educational purposes. All rights belong to their respective owners.
           </p>
+          <small>Fan site for educational purposes.</small>
         </div>
       </div>
     </footer>
@@ -227,21 +212,14 @@ function buildPage({ fighter, division }) {
 }
 
 function buildSocialLinks(socials) {
-  const entries = Object.entries(socials).filter(([, url]) => Boolean(url));
-  if (entries.length === 0) {
+  const ig = typeof socials.ig === "string" ? socials.ig.trim() : "";
+  if (!ig) {
     return "";
   }
-
-  const items = entries
-    .map(
-      ([platform, url]) =>
-        `<a class="button button-outline" href="${url}" target="_blank" rel="noopener">${platform.toUpperCase()}</a>`,
-    )
-    .join("\n              ");
-
+  const safeIg = escapeHtml(ig);
   return `
-            <div class="pill-list" aria-label="Fighter social links">
-              ${items}
+            <div class="fighter-actions">
+              <a class="btn btn--ghost" href="${safeIg}" target="_blank" rel="noopener" aria-label="Instagram profile">Instagram</a>
             </div>`;
 }
 
