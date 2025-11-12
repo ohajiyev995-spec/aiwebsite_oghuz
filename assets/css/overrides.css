@@ -1,0 +1,11 @@
+/* Gallery overrides: ensure sections remain visible with default spacing */
+.gallery,
+.fighter-gallery,
+.gallery-section,
+.media-gallery,
+section.gallery,
+section.fighter-gallery {
+  display: revert !important;
+  margin: revert !important;
+  padding: revert !important;
+}
