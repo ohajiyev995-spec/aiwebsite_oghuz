@@ -23,7 +23,7 @@ export const ROSTER = {
             "vs Alex Perez (UFC 277)",
           ],
           img: "assets/img/fighters/alexandre-pantoja.webp",
-          socials: { ig: "https://www.instagram.com/pantojamma/", tw: "" },
+          socials: { ig: "https://www.instagram.com/pantoja_oficial?igsh=bzdncGNnc3Iza3V5/", tw: "" },
         },
         {
           slug: "brandon-royval",
@@ -70,7 +70,7 @@ export const ROSTER = {
             "vs Chito Vera 2 (UFC 299)",
           ],
           img: "assets/img/fighters/sean-omalley.webp",
-          socials: { ig: "https://www.instagram.com/sugarsean/", tw: "" },
+          socials: { ig: "https://www.instagram.com/sugasean?igsh=MWJ1emNxNHRycWd5ZQ==", tw: "" },
         },
         {
           slug: "merab-dvalishvili",
